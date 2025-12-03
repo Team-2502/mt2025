@@ -32,8 +32,7 @@ public class Robot extends TimedRobot {
   private final WPI_TalonSRX m_backRight = new WPI_TalonSRX(3);
   private final WPI_TalonSRX m_intakeMotor = new WPI_TalonSRX(5);
   private final WPI_TalonSRX m_shooterOne = new WPI_TalonSRX(6);
-  private final WPI_TalonSRX m_shooterTwo = new WPI_TalonSRX(7);
-  private final WPI_TalonSRX m_vertical = new WPI_TalonSRX(8);
+  private final WPI_TalonSRX m_indexer = new WPI_TalonSRX(7);
 
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
@@ -124,28 +123,17 @@ public class Robot extends TimedRobot {
 
     if (m_leftStick.getRawButton(1)) {
       m_shooterOne.set(1);
-      m_shooterTwo.set(-1);
     }
     else {
       m_shooterOne.set(0);
-      m_shooterTwo.set(0);
     }
+
     if (m_leftStick.getRawButton(1)) {
-      m_vertical.set(1);
+      m_indexer.set(1);
     }
     else {
-      m_vertical.set(0);
+      m_indexer.set(0);
     }
-    // System.out.println(m_frontLeft.get());
-    // System.out.println(m_frontRight.get());
-    // System.out.println(m_backLeft.get());
-    // System.out.println(m_backRight.get());
-    // if (m_leftStick.getRawButton(0)) {
-    //   m_intakeMotor.set(1);
-    // }
-    // else {
-    //   m_intakeMotor.set(0);
-    // }
   }
 
   /** This function is called once when the robot is disabled. */
