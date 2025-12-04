@@ -38,6 +38,7 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  private boolean on = false;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -115,21 +116,40 @@ public class Robot extends TimedRobot {
     m_backLeft.set(-m_leftStick.getY());
     m_backRight.set(m_rightStick.getY());
     if (m_rightStick.getRawButton(1)) {
-      m_intakeMotor.set(-0.5);
+      //m_intakeMotor.setInverted(true);
+      m_intakeMotor.set(-0.6);
+    }
+    else if (m_rightStick.getRawButton(10)) {
+      m_intakeMotor.set(1);
+    }
+    else if (m_rightStick.getRawButton(3)) {
+      m_intakeMotor.set(0.3);
+    }
+    else if (m_rightStick.getRawButton(4)) {
+      m_intakeMotor.set(-1);
     }
     else {
       m_intakeMotor.set(0);
     }
 
-    if (m_leftStick.getRawButton(1)) {
-      m_shooterOne.set(1);
+    
+    if (m_leftStick.getRawButtonReleased(2)) {
+      if (on == true) {
+        on = false;
+      }
+      else {
+        on = true;
+      }
+    }
+    if (on == true) {
+      m_shooterOne.set(-0.55);
     }
     else {
       m_shooterOne.set(0);
     }
 
     if (m_leftStick.getRawButton(1)) {
-      m_indexer.set(1);
+      m_indexer.set(-0.5);
     }
     else {
       m_indexer.set(0);
