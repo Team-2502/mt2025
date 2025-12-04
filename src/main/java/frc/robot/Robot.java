@@ -39,6 +39,7 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  private boolean on = false;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -123,6 +124,20 @@ public class Robot extends TimedRobot {
     }
 
     if (m_leftStick.getRawButton(1)) {
+      m_vertical.set(1);
+    }
+    else {
+      m_vertical.set(0);
+    }
+    if (m_leftStick.getRawButtonReleased(2)) {
+      if (on == true) {
+        on = false;
+      }
+      else {
+        on = true;
+      }
+    }
+    if (on == true) {
       m_shooterOne.set(1);
       m_shooterTwo.set(-1);
     }
@@ -130,12 +145,12 @@ public class Robot extends TimedRobot {
       m_shooterOne.set(0);
       m_shooterTwo.set(0);
     }
-    if (m_leftStick.getRawButton(1)) {
-      m_vertical.set(1);
-    }
-    else {
-      m_vertical.set(0);
-    }
+    // if (m_leftStick.getRawButton(1)) {
+    //   m_vertical.set(1);
+    // }
+    // else {
+    //   m_vertical.set(0);
+    // }
     // System.out.println(m_frontLeft.get());
     // System.out.println(m_frontRight.get());
     // System.out.println(m_backLeft.get());
