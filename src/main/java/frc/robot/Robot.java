@@ -116,19 +116,26 @@ public class Robot extends TimedRobot {
     m_frontRight.set(m_rightStick.getY());
     m_backLeft.set(-m_leftStick.getY());
     m_backRight.set(m_rightStick.getY());
+
     if (m_rightStick.getRawButton(1)) {
-      m_intakeMotor.set(-0.5);
-    }
-    else {
+      m_intakeMotor.set(-0.4);
+    } else if (m_rightStick.getRawButton(2)) {
+      m_intakeMotor.set(0.4);
+    } else if (m_rightStick.getRawButton(4)) {
+      m_intakeMotor.set(1);
+    } else {
       m_intakeMotor.set(0);
     }
 
     if (m_leftStick.getRawButton(1)) {
-      m_vertical.set(1);
+      m_vertical.set(0.5);
     }
-    else {
+    else if (m_leftStick.getRawButton(4)) {
+      m_vertical.set(-0.5);
+    } else {
       m_vertical.set(0);
     }
+
     if (m_leftStick.getRawButtonReleased(2)) {
       if (on == true) {
         on = false;
@@ -138,13 +145,15 @@ public class Robot extends TimedRobot {
       }
     }
     if (on == true) {
-      m_shooterOne.set(0.5);
-      m_shooterTwo.set(-0.5);
+      m_shooterOne.set(0.35);
+      m_shooterTwo.set(-0.35);
     }
     else {
       m_shooterOne.set(0);
       m_shooterTwo.set(0);
     }
+
+    
     // if (m_leftStick.getRawButton(1)) {
     //   m_vertical.set(1);
     // }
