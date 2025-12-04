@@ -138,8 +138,8 @@ public class Robot extends TimedRobot {
       }
     }
     if (on == true) {
-      m_shooterOne.set(1);
-      m_shooterTwo.set(-1);
+      m_shooterOne.set(0.5);
+      m_shooterTwo.set(-0.5);
     }
     else {
       m_shooterOne.set(0);
